@@ -1,5 +1,5 @@
 package com.homeAutomation;
 
-public class Fan {
+public class Fan extends Device{
 
 }
