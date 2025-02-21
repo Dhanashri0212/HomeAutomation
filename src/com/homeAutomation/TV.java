@@ -1,5 +1,6 @@
 package com.homeAutomation;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,6 +11,14 @@ public class TV extends Device implements EntertainmentDevices {
 	double numberOfChannel = 300;
 	
 	
+	public TV(String deviceType, boolean powerStatus, LocalTime onTime, LocalTime offTime, double currentVolume,
+			double channelNumber, double numberOfChannel) {
+		super(deviceType, powerStatus, onTime, offTime);
+		this.currentVolume = currentVolume;
+		this.channelNumber = channelNumber;
+		this.numberOfChannel = numberOfChannel;
+	}
+
 	public double getChannelNumber() {
 		return channelNumber;
 	}
@@ -96,6 +105,13 @@ public class TV extends Device implements EntertainmentDevices {
 			
 		
 		}
+	}
+	public boolean checkStatus() {
+		if(powerStatus == true) {
+			return true;
+		}
+		return false;
+		
 	}
 
 }

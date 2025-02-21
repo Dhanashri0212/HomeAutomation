@@ -4,33 +4,37 @@ package com.homeAutomation;
 import java.time.Duration;
 import java.time.LocalTime;
 
-public class Device  {
-	String deviceType;
-	boolean powerStatus;
-	LocalTime onTime;
-	LocalTime offTime;
+public abstract class Device  {
+	String deviceName;
+	boolean Status = false;
+	LocalTime onTime = LocalTime.now();
+	LocalTime offTime = LocalTime.now();
 
 	public Device() {
 	super();
+	
 }
-	public Device(String deviceType, boolean powerStatus, LocalTime onTime, LocalTime offTime) {
+	public Device(String deviceName, boolean status) {
 		super();
-		this.deviceType = deviceType;
-		this.powerStatus = powerStatus;
-		this.onTime = onTime;
-		this.offTime = offTime;
+		this.deviceName = deviceName;
+		Status = status;
 	}
-	public String getDeviceType() {
-		return deviceType;
+	public Device(String deviceName) {
+		super();
+		this.deviceName = deviceName;
+		
 	}
-	public void setDeviceType(String deviceType) {
-		this.deviceType = deviceType;
+	public String getDeviceName() {
+		return deviceName;
 	}
-	public boolean isPowerStatus() {
-		return powerStatus;
+	public void setDeviceName(String deviceName) {
+		this.deviceName = deviceName;
 	}
-	public void setPowerStatus(boolean powerStatus) {
-		this.powerStatus = powerStatus;
+	public String getStatus() {
+		return Status ? "ON" : "OFF";
+	}
+	public void setStatus(boolean Status) {
+		this.Status = Status;
 	}
 	public LocalTime getOnTime() {
 		return onTime;
@@ -47,34 +51,43 @@ public class Device  {
 	
 	
 	public boolean turnOn() {
-		if(powerStatus == false) {
-			powerStatus = true;
-			return powerStatus;
+		if(Status == false) {
+			Status = true;
+			onTime = LocalTime.now();
+//			LocalTime on= setOnTime(time);
+	        System.out.println(" turned on at " + onTime);
+			return Status;
 		}
 		
-		LocalTime time = LocalTime.now();
-		setOnTime(time);
+		
+
 	
 	return false;
 	}
 	
 	public boolean turnOff() {
-		if(powerStatus == true) {
-			powerStatus = false;
-			return powerStatus;
+		if(Status == true) {
+			Status = false;
+			LocalTime offTime = LocalTime.now();
+//			setOffTime(time);
+	        System.out.println(" turned OFF at " + offTime);
+			return Status;
 		}
 		
-		LocalTime time = LocalTime.now();
-		setOffTime(time);
+		
+
 	
 	return true;
 	}
 	
 	public void activeTime() {
-		Duration duration = Duration.between(onTime, offTime);
-		System.out.println("Device active for "+duration.toHours()+":"+duration.toMinutes()+":"+duration.toSeconds());
+		Duration duration = Duration.between(offTime,onTime);
+		System.out.println("Device active for "+duration.toHours()+"h "+duration.toMinutes()+"m "+duration.toSeconds()+"s");
 
 	}
+//	public  boolean checkStatus();
+//		
+
 
 	
 }

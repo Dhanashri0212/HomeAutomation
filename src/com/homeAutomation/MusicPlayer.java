@@ -1,5 +1,6 @@
 package com.homeAutomation;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,6 +11,14 @@ public class MusicPlayer extends Device implements EntertainmentDevices{
 	 int currentSongIndex;
 
 	
+	public MusicPlayer(String deviceType, boolean powerStatus, LocalTime onTime, LocalTime offTime,
+			double currentVolume, List<String> playlist, int currentSongIndex) {
+		super(deviceType, powerStatus, onTime, offTime);
+		this.currentVolume = currentVolume;
+		this.playlist = playlist;
+		this.currentSongIndex = currentSongIndex;
+	}
+
 	public MusicPlayer() {
 		 this.playlist = new ArrayList<>();
 	        this.currentSongIndex = 0;
@@ -109,8 +118,16 @@ public class MusicPlayer extends Device implements EntertainmentDevices{
 			
 			}
 		}
-	}
 	
+public boolean checkStatus() {
+	if(powerStatus == true) {
+		return true;
+	}
+	return false;
+	
+}
+	
+
 
 
 }
