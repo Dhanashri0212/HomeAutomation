@@ -2,7 +2,7 @@ package com.homeAutomation;
 
 import java.time.LocalTime;
 
-public class Fan extends Device implements Kithchen{
+public class Fan extends Device implements KitchenDevice{
 
 	
 	

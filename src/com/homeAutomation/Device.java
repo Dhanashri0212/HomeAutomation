@@ -6,7 +6,7 @@ import java.time.LocalTime;
 
 public abstract class Device  {
 	String deviceName;
-	boolean Status = false;
+	boolean Status = true;
 	LocalTime onTime = LocalTime.now();
 	LocalTime offTime = LocalTime.now();
 
@@ -54,39 +54,37 @@ public abstract class Device  {
 		if(Status == false) {
 			Status = true;
 			onTime = LocalTime.now();
-//			LocalTime on= setOnTime(time);
 	        System.out.println(" turned on at " + onTime);
 			return Status;
 		}
-		
-		
-
-	
 	return false;
 	}
 	
 	public boolean turnOff() {
 		if(Status == true) {
 			Status = false;
-			LocalTime offTime = LocalTime.now();
-//			setOffTime(time);
+			offTime = LocalTime.now();
+
 	        System.out.println(" turned OFF at " + offTime);
 			return Status;
 		}
-		
-		
 
-	
 	return true;
 	}
 	
+	@Override
+	public String toString() {
+		return "Device [deviceName=" + deviceName + ", Status=" + Status + ", onTime=" + onTime + ", offTime=" + offTime
+				+ "]";
+	}
 	public void activeTime() {
-		Duration duration = Duration.between(offTime,onTime);
-		System.out.println("Device active for "+duration.toHours()+"h "+duration.toMinutes()+"m "+duration.toSeconds()+"s");
+		Duration duration = Duration.between(onTime,offTime);
+		System.out.println(deviceName+"active for "+duration.toHours()+"h "+ duration.toMinutesPart()+"m "+duration.toSecondsPart()+"s");
 
 	}
 //	public  boolean checkStatus();
 //		
+	protected abstract void tempController();
 
 
 	

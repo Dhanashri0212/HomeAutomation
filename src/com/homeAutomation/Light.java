@@ -2,7 +2,7 @@ package com.homeAutomation;
 
 import java.time.LocalTime;
 
-public class Light extends Device {
+public class Light extends Device implements KitchenDevice {
 	
 
 	public Light() {
