@@ -33,29 +33,7 @@ public class Home {
         }
 	}
 
-	public void turnOn() {
-		System.out.println("Enter Room Type");
-		String type = sc.next();
-		Room room = searchRoom(type);
-		if (room == null) {
-            System.out.println("Error: Room '" + type + "' not found.");
-            return;  // Prevent NullPointerException
-        }
-		room.turnOn();
-	}
 
-	public void turnOff() {
-		System.out.println("Enter Room Type");
-		String type = sc.next();
-		Room room = searchRoom(type);
-		if (room == null) {
-            System.out.println("Error: Room '" + type + "' not found.");
-            return;  // Prevent NullPointerException
-        }
-
-		room.turnOff();
-	
-	}
 	public Room searchRoom(String type) {
 		
 		for (Room room : rooms) {
@@ -77,32 +55,76 @@ public class Home {
 
 	public int addDevice() {
 		
-//			System.out.println("1.Press 1 for Kitchen");
-//			System.out.println("2.Press 2 for BedRoom");
-//			System.out.println("3.Press 3 for Corridor");
-//			System.out.println("4.Press 4 for Dinning Area");
-//			System.out.println("5.Press 5 for Living Area");
-//			System.out.println("6.Press 6 for WashRoom");
-//			int ch = sc.nextInt();
-		
-			System.out.println("Enter Room Type");
-			String type = sc.next();
-			for (Room room : rooms) {
+			System.out.println("1.Press 1 for Kitchen");
+			System.out.println("2.Press 2 for BedRoom");
+			System.out.println("3.Press 3 for Living Area");
+			System.out.println("4.Press 4 for Dinning Area");
+			System.out.println("5.Press 5 for Corridor");
+			System.out.println("6.Press 6 for WashRoom");
+
+			int ch = sc.nextInt();
 			
-				if(room.getRoomType().equalsIgnoreCase(type)) {
-					try {
-						return room.addDevice();
-					} catch (DeviceNotFound e) {
-						// TODO Auto-generated catch block
-						System.out.println(e.getMessage());
+//				rooms.stream().anyMatch(room -> room.roomType.equalsIgnoreCase("Kitchen"));
+				for (Room room : rooms) {
+					if(ch == 1 && room.roomType.equalsIgnoreCase("Kitchen")) {
+						try {
+							return room.addDevice();
+						} catch (DeviceNotFound e) {
+							// TODO Auto-generated catch block
+							System.out.println(e.getMessage());
+						}
 					}
+					else if(ch ==2 && room.roomType.equalsIgnoreCase("BedRoom")) {
+						try {
+							return room.addDevice();
+						} catch (DeviceNotFound e) {
+							// TODO Auto-generated catch block
+							System.out.println(e.getMessage());
+						}
+					}
+					else if(ch ==3 && room.roomType.equalsIgnoreCase("Living Area")) {
+						try {
+							return room.addDevice();
+						} catch (DeviceNotFound e) {
+							// TODO Auto-generated catch block
+							System.out.println(e.getMessage());
+						}
+					}
+					else if(ch ==4 && room.roomType.equalsIgnoreCase("Dinning Area")) {
+						try {
+							return room.addDevice();
+						} catch (DeviceNotFound e) {
+							// TODO Auto-generated catch block
+							System.out.println(e.getMessage());
+						}
+					}
+					else if(ch ==5 && room.roomType.equalsIgnoreCase("Corridor")) {
+						try {
+							return room.addDevice();
+						} catch (DeviceNotFound e) {
+							// TODO Auto-generated catch block
+							System.out.println(e.getMessage());
+						}
+					}
+					else if(ch == 6 && room.roomType.equalsIgnoreCase("Corridor")) {
+						try {
+							return room.addDevice();
+						} catch (DeviceNotFound e) {
+							// TODO Auto-generated catch block
+							System.out.println(e.getMessage());
+						}
+					}
+					else {
+						System.out.println("Enter Valid Choice");
+					}
+					
 				}
 				
-				
-
-		}
+	
 			return 0;
-	}
+		}
+			
+	
 	
 	public void Displaydevice() {
 		System.out.println("Enter Room Type");
@@ -113,9 +135,7 @@ public class Home {
 			}
 
 	}
-	
-	
-		
+
 	}
 
 

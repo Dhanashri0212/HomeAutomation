@@ -22,7 +22,6 @@ public class MainClass {
 			System.out.println("-----------------------------------------------------------------------\n");
 			
 			int choice = sc.nextInt();
-			
 			switch(choice) {
 			case 1:{
 				
@@ -30,13 +29,10 @@ public class MainClass {
 				if(result != 0) {
 					System.out.println("Device Added Successfully!!!");
 				}
-	
 				break;	
 			}
 			case 2:{
 				home.controlDevice();
-				
-				
 				break;
 			}
 			case 3:{

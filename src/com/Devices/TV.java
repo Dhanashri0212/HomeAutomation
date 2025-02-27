@@ -1,11 +1,15 @@
-package com.homeAutomation;
+package com.Devices;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class TV extends Device implements EntertainmentDevices {
+import com.homeAutomation.BedroomDevice;
+import com.homeAutomation.EntertainmentDevices;
+import com.homeAutomation.LivingRoomDevice;
+
+public class TV extends Device implements EntertainmentDevices,BedroomDevice,LivingRoomDevice{
 	double currentVolume = 10;
 	double channelNumber = 101;
 	double numberOfChannel = 300;
@@ -112,5 +116,44 @@ public class TV extends Device implements EntertainmentDevices {
 		return false;
 		
 	}
+
+
+	@Override
+	public void control() {
+		while(true) {
+		System.out.println("Do you want to: ");
+		System.out.println("1. Turn ON a Device");
+		System.out.println("2. Turn OFF a Device");
+		System.out.println("3. Increase Volume");
+		System.out.println("4. Decrease Volume");
+		System.out.println("5. Change Channel");
+		System.out.println("Enter your choice");
+		int ch = sc.nextInt();
+		switch(ch) {
+		case 1:{
+			turnOn();
+			break;
+		}
+		case 2:{
+			turnOff();
+			break;
+		}
+		case 3:{
+			volumeIncrease();
+			break;
+		}
+		case 4:{
+			volumeDecrease();
+			break;
+		}
+		case 5:{
+			changeChannel();
+			break;
+		}
+		
+	}
+		}
+	}
+	
 
 }

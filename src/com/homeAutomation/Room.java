@@ -20,8 +20,7 @@ public abstract class Room {
 		this.roomType = roomType;
 	}
 	public abstract void checkStatus();
-	public abstract void turnOn();
-	public abstract void turnOff(); 
+
 	public abstract void activeTime();
 		// TODO Auto-generated method stub
 	public abstract int addDevice() throws DeviceNotFound;

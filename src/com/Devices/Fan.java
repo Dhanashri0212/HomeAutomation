@@ -1,8 +1,11 @@
-package com.homeAutomation;
+package com.Devices;
 
 import java.time.LocalTime;
 
-public class Fan extends Device implements KitchenDevice{
+import com.homeAutomation.BedroomDevice;
+import com.homeAutomation.KitchenDevice;
+
+public class Fan extends Device implements KitchenDevice,BedroomDevice{
 
 	
 	
@@ -19,6 +22,12 @@ public class Fan extends Device implements KitchenDevice{
 			return true;
 		}
 		return false;
+		
+	}
+
+	@Override
+	public void control() {
+		
 		
 	}
 

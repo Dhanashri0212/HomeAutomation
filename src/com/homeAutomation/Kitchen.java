@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.Devices.Device;
+import com.Devices.Fan;
+import com.Devices.Light;
+import com.Devices.refrigerator;
+
 public class Kitchen extends Room implements TemperatureControllerDevices {
 	
 	List<Device> devices = new ArrayList<Device>();
@@ -29,21 +34,19 @@ public class Kitchen extends Room implements TemperatureControllerDevices {
     }
 	
 	public void turnOn() {
-		// TODO Auto-generated method stub
 		System.out.println("Enter Device name to Trun On");
 		String name = sc.next();
 		for(Device device:devices) {
-			if(device.deviceName.equalsIgnoreCase(name)) {
+			if(device.getDeviceName().equalsIgnoreCase(name)) {
 				device.turnOn();
 			}
 		}
 	}
 	public void turnOff() {
-		// TODO Auto-generated method stub
 		System.out.println("Enter Device name to Trun Off");
 		String name = sc.next();
 		for(Device device:devices) {
-			if(device.deviceName.equalsIgnoreCase(name)) {
+			if(device.getDeviceName().equalsIgnoreCase(name)) {
 				device.turnOff();
 			}
 		}	
@@ -56,35 +59,34 @@ public class Kitchen extends Room implements TemperatureControllerDevices {
 	}
 
 	public int addDevice() throws DeviceNotFound {
-		for(Device device:devices) {
-			System.out.println(device.deviceName);
-		}
-
-		while(true) {
-
+		System.out.println("Press 1 for Light");
+		System.out.println("Press 2 for refrigerator");
+		System.out.println("Press 3 for fan");
+		
+		
 			System.out.println("Enter Device Name:");
-			String ch = sc.nextLine();
-			if(ch.equalsIgnoreCase("Light")) {
-				 devices.stream().anyMatch(device -> device instanceof KitchenDevice && device.deviceName.equalsIgnoreCase("Light"));
+			int ch = sc.nextInt();
+			if(ch == 1 ) {
+				 devices.stream().anyMatch(device -> device instanceof KitchenDevice && device.getDeviceName().equalsIgnoreCase("Light"));
 				 devices.add(new Light("Light", false));
 				 return 1;		   
 			}
-			else if(ch.equalsIgnoreCase("Fan")) {
-				devices.stream().anyMatch(device -> device instanceof KitchenDevice && device.deviceName.equalsIgnoreCase("Fan"));
-				 devices.add(new Fan("Fan", false));
-				 return 2;
-			}
-			else if(ch.equalsIgnoreCase("refrigerator")) {
-				devices.stream().anyMatch(device -> device instanceof KitchenDevice && device.deviceName.equalsIgnoreCase("refrigerator"));
+			else if(ch == 2 ) {
+				devices.stream().anyMatch(device -> device instanceof KitchenDevice && device.getDeviceName().equalsIgnoreCase("refrigerator"));
 				 devices.add(new refrigerator("refrigerator", false));
 				 return 2;
+			}
+			else if(ch ==3) {
+				devices.stream().anyMatch(device -> device instanceof KitchenDevice && device.getDeviceName().equalsIgnoreCase("Fan"));
+				 devices.add(new Fan("Fan", false));
+				 return 3;
 			}
 			else {
 				throw new DeviceNotFound();
 			}
 		}
 		
-		}
+		
 		
 	public void Display() {
 		System.out.println("Kitchen devices are:");
@@ -95,56 +97,41 @@ public class Kitchen extends Room implements TemperatureControllerDevices {
 	}
 	@Override
 	public void controlDevice() {
+		System.out.println("Press 1 for Light");
+		System.out.println("Press 2 for refrigerator");
+		System.out.println("Press 3 for fan");
 		System.out.println("Enter Device you want to control:");
-		String name = sc.next();
+		int ch = sc.nextInt();
+		
 		for(Device device:devices) {
-			if(device.deviceName.equalsIgnoreCase(name)) {
-		
-		
-			
-			while(true) {
-				System.out.println("Do you want to: ");
-				System.out.println("1. Turn ON a Device");
-				System.out.println("2. Turn OFF a Device");
-				System.out.println("3. Control Temperature");
-				System.out.println("4.End");
-				
-				System.out.print("Enter your choice (1 for ON, 2 for OFF): ");
-				int ch = sc.nextInt();
-				switch(ch) {
-				case 1:{
-					device.turnOn();
-					break;
-				}
-				case 2:{
-					device.turnOff();
-					break;
-				}
-				case 3:{
-				device.tempController();
-					break;
-				
-				}
-				case 4:{
-					return;
-				}
-				}	
+			if(ch == 1 && device.getDeviceName().equalsIgnoreCase("Light")) {
+				device.control();
 			}
-		}
+			else if(ch ==2 && device.getDeviceName().equalsIgnoreCase("refrigerator")) {
+				device.control();
+			}
+			else if(ch ==3 && device.getDeviceName().equalsIgnoreCase("fan")) {
+				device.control();
+			}
+			else {
+				return;
+			}
 		}
 	}
 	
 	@Override
 	public void tempController() {
+		System.out.println("Press 1 for Light");
+		System.out.println("Press 2 for refrigerator");
+		System.out.println("Press 3 for fan");
 		System.out.println("Enter Device you want to control:");
 		String name = sc.next();
 		for(Device device:devices) {
-			if(device.deviceName.equalsIgnoreCase(name)) {
+			if(device.getDeviceName().equalsIgnoreCase(name)) {
 				((TemperatureControllerDevices) device).tempController();
-			}
-		
 		}
 	}
+}
 }
 
 	

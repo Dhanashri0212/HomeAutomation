@@ -1,4 +1,4 @@
-package com.homeAutomation;
+package com.Devices;
 
 
 import java.time.Duration;
@@ -54,7 +54,7 @@ public abstract class Device  {
 		if(Status == false) {
 			Status = true;
 			onTime = LocalTime.now();
-	        System.out.println(" turned on at " + onTime);
+	        System.out.println("Turned on at " + onTime);
 			return Status;
 		}
 	return false;
@@ -65,7 +65,7 @@ public abstract class Device  {
 			Status = false;
 			offTime = LocalTime.now();
 
-	        System.out.println(" turned OFF at " + offTime);
+	        System.out.println("Turned OFF at " + offTime);
 			return Status;
 		}
 
@@ -84,7 +84,9 @@ public abstract class Device  {
 	}
 //	public  boolean checkStatus();
 //		
-	protected abstract void tempController();
+//	public abstract void tempController();
+	public abstract void control(); 
+	
 
 
 	
